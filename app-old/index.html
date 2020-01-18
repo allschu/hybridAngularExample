@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="AngularJsExample">
+
+<head>
+    <script src="./angular-1.7.9/angular.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="./service.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Page Title</title>
+</head>
+
+<body>
+
+    <div ng-controller="homeController">
+        {{title}}
+    </div>
+
+    <table ng-controller="gotController">
+        <thead>
+            <th>
+                Name
+            </th>            
+            <th>
+                Gender
+            </th>
+            <th>
+                Culture
+            </th>
+        </thead>
+        <tr ng-repeat="x in characters">
+            <td>
+                {{x.name}}
+            </td>
+            <td>
+                {{x.gender}}
+            </td>
+            <td>
+                {{x.culture}}
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>
