@@ -1,46 +1,79 @@
 <!DOCTYPE html>
-<html ng-app="AngularJsExample">
-
+<html lang="en" ng-app="AngularJsExample">
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>        
     <script src="./angular-1.7.9/angular.min.js"></script>
     <script src="./script.js"></script>
     <script src="./service.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+
     <title>Page Title</title>
 </head>
 
 <body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">AngularJsHybrid</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div ng-controller="homeController">
+                {{title}}
+            </div>
 
-    <div ng-controller="homeController">
-        {{title}}
+            <table ng-controller="gotController">
+                <thead>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Gender
+                    </th>
+                    <th>
+                        Culture
+                    </th>
+                </thead>
+                <tr ng-repeat="x in characters">
+                    <td>
+                        {{x.name}}
+                    </td>
+                    <td>
+                        {{x.gender}}
+                    </td>
+                    <td>
+                        {{x.culture}}
+                    </td>
+                </tr>
+            </table>
+        </main>
     </div>
-
-    <table ng-controller="gotController">
-        <thead>
-            <th>
-                Name
-            </th>            
-            <th>
-                Gender
-            </th>
-            <th>
-                Culture
-            </th>
-        </thead>
-        <tr ng-repeat="x in characters">
-            <td>
-                {{x.name}}
-            </td>
-            <td>
-                {{x.gender}}
-            </td>
-            <td>
-                {{x.culture}}
-            </td>
-        </tr>
-    </table>
-
-
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - AngularJsHybrid - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
 </body>
 
 </html>
