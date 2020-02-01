@@ -1,15 +1,22 @@
-angular.module('AngularJsExample', ['ngRoute'])
-    .config(function ($routeProvider) {
-        $routeProvider
-            .when("/", {
-                templateUrl: "./home.html",
-                controller: "homeController"
-            })
-            .when("/Got", {
-                templateUrl: "./gotTable.html",
-                controller: "gotController"
-            })
-    })
+angular.module('AngularJsExample', ['ui.router'])
+    .config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
+        var homeState = {
+            name: 'home',
+            url: '/home',
+            templateUrl: "./home.html",
+            controller: "homeController"
+          }
+        
+          var gotState = {
+            name: 'got',
+            url: '/got',
+            templateUrl: './gotTable.html',
+            contoller: "gotController"
+          }
+        
+          $stateProvider.state(homeState);
+          $stateProvider.state(gotState);
+    }])
     .controller('navController', ['$scope', function ($scope) {
         $scope.searchLabel = 'Search';
 
@@ -20,7 +27,7 @@ angular.module('AngularJsExample', ['ngRoute'])
 
 
     }])
-    .controller('gotController', ['$scope', 'GoTService', function ($scope, GoTService) {
+    .controller('gotController', ['$scope', '$stateParams', 'GoTService', function ($scope, $stateParams, GoTService) {
         $scope.currentMenuItem = 'got';
         GoTService.getCharacters(1, 20).then(function (result) {
             $scope.characters = result.data;
