@@ -1,0 +1,57 @@
+<h2>page {{currentPage}}</h2>
+<table>
+    <thead>
+        <th>
+            Name
+        </th>
+        <th>
+            Gender
+        </th>
+        <th>
+            born
+        </th>
+        <th>
+            died
+        </th>
+        <th>
+            titles
+        </th>
+        <th>
+            aliases
+        </th>
+        <th>
+            Culture
+        </th>
+    </thead>
+    <tr ng-repeat="x in characters">
+        <td>
+            {{x.name}}
+        </td>
+        <td>
+            {{x.gender}}
+        </td>
+        <td>
+            {{x.born}}
+        </td>
+        <td>
+            {{x.died}}
+        </td>
+        <td>
+            <div ng-repeat="y in x.titles">
+                {{y}}
+            </div>
+        </td>
+        <td>
+            <div ng-repeat="y in x.aliases">
+                {{y}}
+            </div>
+        </td>
+        <td>
+            {{x.culture}}
+        </td>
+    </tr>
+</table>
+<div>
+    <input type="button" ng-click="previousPage()" value="Previous page" />
+    <input type="button" ng-click="nextPage()" value="Next page" />
+</div>
