@@ -1,5 +1,6 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -22,8 +23,8 @@ module.exports = {
                 exclude: [/\.(spec|e2e)\.ts$/]
             },
             {
-              test: /\.css$/,
-              loader: "style-loader!css-loader"
+                test: /\.css$/,
+                loader: "style-loader!css-loader"
             },
             {
                 test: /\.html$/,
@@ -31,9 +32,16 @@ module.exports = {
             }
         ]
     },
-    plugins:[
+    plugins: [
         new HtmlWebpackPlugin({
             template: 'config/index.html'
-        })
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: 'src/app-old/*.html',
+                to: '',
+                flatten: true
+            }
+        ])
     ]
 }
