@@ -1,6 +1,6 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -39,6 +39,11 @@ module.exports = {
         new CopyWebpackPlugin([
             {
                 from: 'src/app-old/*.html',
+                to: '',
+                flatten: true
+            },
+            {
+                from: 'src/app-old/*.css',
                 to: '',
                 flatten: true
             }
